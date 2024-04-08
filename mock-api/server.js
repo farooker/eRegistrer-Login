@@ -58,6 +58,7 @@ require("./routes/document-info")(app);
 require("./routes/bank")(app);
 require("./routes/fill_type")(app);
 require("./routes/mytasks")(app);
+require("./routes/verify")(app);
 
 
 

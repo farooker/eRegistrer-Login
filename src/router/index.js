@@ -4,6 +4,32 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
+    path: "/Error",
+    name: "ErrorPage",
+    component: () => import("@/views/Login/Error.vue"),
+  },
+  {
+    path: "/SignIn",
+    name: "SignInPage",
+    component: () => import("@/views/Login/LoginPage.vue"),
+  },
+  {
+    path: "/OtpVerify",
+    name: "OtpVerifyPage",
+    component: () => import("@/views/Login/LoginOtpPage.vue"),
+  },
+
+  {
+    path: "/ForgetPassword",
+    name: "ForgetPasswordPage",
+    component: () => import("@/views/Login/ForgetPasswordPage.vue"),
+  },
+  {
+    path: "/ResetPassword",
+    name: "ResetPasswordPage",
+    component: () => import("@/views/Login/NewPassword.vue"),
+  },
+  {
     path: "/",
     component: () => import("@/layouts/AppDefault.vue"),
     children: [

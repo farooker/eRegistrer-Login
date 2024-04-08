@@ -7,6 +7,7 @@
       width="700"
       height="900"
     >
+    <v-form v-model="validateForm">
       <v-card-item dense>
         <v-row>
           <v-col class="d-flex justify-center">
@@ -35,8 +36,8 @@
           <v-col cols="12">
             <v-text-field
               variant="solo-filled"
-
-              v-model="Form.Email"
+              readonly
+              v-model="email"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -45,16 +46,24 @@
           <v-col><h2>สร้างรหัสผ่านใหม่</h2></v-col>
           <v-col cols="12">
             <v-text-field
+            :disabled="loading"
               variant="solo-filled"
-              v-model="Form.NewPassword"
+              :type="show ? 'text' : 'password'"
+              v-model="newPassword"
+              placeholder="รหัสผ่านใหม่"
+              :rules="rulesValid.newPassword"
             ></v-text-field>
           </v-col>
         </v-row>
         <v-row no-gutters>
           <v-col cols="12">
             <v-text-field
+            :disabled="loading"
               variant="solo-filled"
-              v-model="Form.ConPassword"
+              :type="show ? 'text' : 'password'"
+              v-model="conPassword"
+              placeholder="ยืนยันรหัสผ่านใหม่"
+              :rules="rulesValid.conPassword"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -62,8 +71,9 @@
         <v-row no-gutters >
           <v-col cols="12">
             <v-checkbox
+              :disabled="loading"
               label="แสดงรหัสผ่าน"
-              v-model="Form.CheckPass"
+              v-model="show"
             ></v-checkbox>
             <!-- <h4>แสดงรหัสผ่าน</h4> -->
           </v-col>
@@ -74,26 +84,104 @@
             <!-- Set cols to 12 to take up the full width of the row -->
             <v-btn
             size="x-large"
-              to="/BusinessPartner/CreateBusinessPartner"
               block
+              :disabled="loading"
+              :loading="loading"
               class="text-capitalize rounded-pill"
               color="red"
+              @click="handleResetPassword"
             >
               <!-- <v-icon>mdi-plus</v-icon> -->
-              Login
+             สร้างรหัสผ่านใหม่
             </v-btn>
           </v-col>
         </v-row>
       </v-card-item>
+    </v-form>
     </v-card>
   </v-container>
 </template>
 <script setup>
-import { ref } from "vue";
-const Form = ref({
-  Email: "",
-  NewPassword: "",
-  ConPassword: "",
-  CheckPass: "",
-});
+  // eslint-disable-next-line no-unused-vars
+  import { ref, onBeforeMount,computed } from 'vue';
+  import { useRouter } from 'vue-router';
+  import verifyService from '@/apis/VerifyService';
+
+  import { useErrorHandlingDialog } from '@/components/dialogs/ExceptionHandleDialogService'
+  const { handlingErrorsMessage } = useErrorHandlingDialog();
+
+  import { useAlertDialogDialog } from '@/components/dialogs/AlertSuccessDialogService'
+  const { showAlert } = useAlertDialogDialog();
+
+  const router = useRouter();
+
+  const email = ref(null);
+  const newPassword = ref(null);
+  const conPassword = ref(null);
+  const code = ref(null);
+  const show = ref(false);
+  const loading = ref(false);
+  const validateForm = ref(null);
+  const rulesValid = ref({
+    newPassword: [(v) => !!v || "กรุณากรอกข้อมูลให้ครบ"],
+    conPassword: [
+      (v) => !!v || "กรุณากรอกข้อมูลให้ครบ",
+      (v) => v === newPassword.value ||  "รหัสผ่านไม่ตรงกัน",
+    ],
+  })
+
+  onBeforeMount(() => {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    email.value = urlParams.get('email');
+    code.value = urlParams.get('code');
+
+    handleVerifyUrl(email.value, code.value);
+  });
+
+  const handleVerifyUrl = async (email,code) => {
+    try {
+      loading.value = true;
+      const response = await verifyService.verifyUrl(email,code);
+      console.log(response)
+      if(response?.data?.code !== '200'){
+        router.push('/Error');
+      }
+    } catch (e) {
+      if (e.response) {
+        const val = e.response.data
+        handlingErrorsMessage(val.message, val?.data.error);
+        router.push('/Error');
+        return;
+      }
+      handlingErrorsMessage("unknown", e.message);
+      router.push('/Error');
+    } finally {
+      loading.value = false;
+    }
+  }
+  const handleResetPassword =  async () =>{
+     if(validateForm.value){
+      try
+      {
+          loading.value = true;
+          const response = await verifyService.resetPassword(email.value,conPassword.value,code.value);
+          if(response.data?.is_success){
+              const confirmed = await showAlert('สร้างรหัสผ่านใหม่สำเร็จแล้ว','คุณสามารถใช้รหัสผ่านใหม่เข้าใช้งานได้เลย');
+              if (confirmed) {
+                router.push('/SignIn');
+              }
+          }
+      } catch (e) {
+          if (e.response) {
+              const val = e.response?.data
+              handlingErrorsMessage(val.message, val.data?.error);
+              return;
+            }
+            handlingErrorsMessage("unknown", e.message);
+      } finally {
+            loading.value = false;
+      }
+    }
+  }
 </script>

@@ -1,15 +1,15 @@
 <template>
   <!-- <v-container fluid> -->
-  <div style="background-color: lightgrey">
+  <div style="background-color: lightgrey;">
   <v-row align="center">
-    <v-col cols="6">
+    <v-col cols="5">
       <v-row no-gutters>
         <v-col
           class="d-flex"
           cols="12"
           style="
             height: 100vh;
-            background-image: url('/BG2-02.png');
+            background-image: url('/otp01.png');
             background-size: cover;
             background-position: center;
           "
@@ -18,24 +18,16 @@
       </v-row>
     </v-col>
     <v-col cols="6">
-      <NewPassword class="d-flex justify-center"/>
+      <FormForgetPassword class="d-flex justify-center"/>
     </v-col>
   </v-row>
   <!-- <FormLogin /> -->
   <!-- </v-container> -->
-  <ConfirmDialog />
-  <TemplateDialog />
-  <ExceptionHandleDialog />
-  <AlertSuccessDialog />
   </div>
 </template>
 <script setup>
 // import { ref, onBeforeMount,computed } from 'vue';
-import NewPassword from "@/components/forms/Login/FormNewPassword.vue";
-import ConfirmDialog from '@/components/dialogs/ConfirmDialog.vue';
-import TemplateDialog from '@/components/dialogs/TemplateDialog.vue';
-import ExceptionHandleDialog from '@/components/dialogs/ExceptionHandleDialog.vue';
-import AlertSuccessDialog from '@/components/dialogs/AlertSuccessDialog.vue'
+import FormForgetPassword from "@/components/forms/Login/FormForgetPassword.vue";
 </script>
 <style scoped>
 .imagebackground {
@@ -43,3 +35,4 @@ import AlertSuccessDialog from '@/components/dialogs/AlertSuccessDialog.vue'
   background-size: cover;
 }
 </style>
+
