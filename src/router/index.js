@@ -44,6 +44,7 @@ const routes = [
         component: () => import("@/views/rules/ListRolesPage.vue"),
       },
       {
+        //module 10
         path: "/UserManagement",
         name: "UserManagement",
         component: () => import("@/views/UserMangement/UserMangementPage.vue"),
@@ -54,6 +55,7 @@ const routes = [
         component: () => import("@/views/HistoryLog/HistoryUserPage.vue"),
       },
       {
+        //module 16
         path: "/CreateRolePage/:role_id?",
         name: "CreateRolePage",
         component: () => import("@/views/rules/CreateRolePage.vue"),
@@ -74,23 +76,27 @@ const routes = [
         component: () => import("@/views/historyLog/HistoryRolePage.vue"),
       },
       {
+        //module 11
         path: "/MasterDataManagement",
         name: "MasterDataManagement",
         component: () => import("@/views/master-data/MasterDataManagement.vue"),
       },
       {
+        //module 12
         path: "/CorparationDetail/:id?",
         name: "CorparationDetail",
         component: () =>
           import("@/views/master-data/details/CorparationDetail.vue"),
       },
       {
+        //module 13
         path: "/BusinessUnitDetail/:id?",
         name: "BusinessUnitDetail",
         component: () =>
           import("@/views/master-data/details/BusinessUnitDetail.vue"),
       },
       {
+        //module 14
         path: "/CompanyDetail/:id?",
         name: "CompanyDetail",
         component: () =>
@@ -172,48 +178,56 @@ const routes = [
       },
 
       {
+        //module4
         path: "/Account/AccountTask",
         name: "AccountManagement",
         component: () => import("@/views/accounts/AccountManagement.vue"),
       },
       //Account
       {
+        //module 4
         path: "/Account/AccountDetail/:id?",
         name: "AccountDetail",
         component: () => import("@/views/accounts/AccountDetail.vue"),
       },
       //business
       {
+        //module 1
         path: "/BusinessPartner/BusinessPartnerList",
         name: "BusinessPartnerList",
         component: () =>
           import("@/views/BusinessPartner/BusinessPartnerList.vue"),
       },
       {
+        //module 1
         path: "/BusinessPartner/SearchBusinessPartner",
         name: "SearchBusinessPartner",
         component: () =>
           import("@/views/BusinessPartner/SearchBusinessPartner.vue"),
       },
       {
+        //module 1
         path: "/BusinessPartner/CreateBusinessPartner",
         name: "CreateBusinessPartner",
         component: () =>
           import("@/views/BusinessPartner/CreateBusinessPartner.vue"),
       },
       {
+        //module 1
         path: "/BusinessPartner/ChangInfo",
         name: "ChangInfo",
         component: () => import("@/views/BusinessPartner/ChangInfo.vue"),
       },
-      ///ExtendCompany
+
       {
+        //module 1
         path: "/BusinessPartner/ExtendCompany",
         name: "ExtendCompany",
         component: () => import("@/views/BusinessPartner/ExtendCompany.vue"),
       },
 
       {
+        //ไม่ใช้
         path: "/BusinessPartner/CustomerVendor",
         name: "CustomerVendor",
         component: () => import("@/views/BusinessPartner/CustomerVendor.vue"),
@@ -226,68 +240,81 @@ const routes = [
       ////
 
       {
+        //module 1
         path: "/BusinessPartner/ExtendRole",
         name: "ExtendRole",
         component: () => import("@/views/BusinessPartner/ExtendRole.vue"),
       },
       {
+        //module1
         path: "/BusinessPartner/AttachedDocument",
         name: "AttachedDocument",
         component: () => import("@/views/BusinessPartner/AttachedDocument.vue"),
       },
 
       {
+        //module 3
         path: "/accounts/AccountDashBoard",
         name: "AccountDashBoard",
         component: () => import("@/views/accounts/AccountDashBoard.vue"),
       },
 
       {
+        //module 4
         path: "/accounts/extendcompany",
         name: "AccountExtendCompany",
-        component: () => import("@/views/accounts/type-account/AccountExtendCompany.vue"),
+        component: () =>
+          import("@/views/accounts/type-account/AccountExtendCompany.vue"),
       },
 
       {
+        //module 4
         path: "/accounts/AccountChangeInfo",
         name: "AccountChangeInfo",
-        component: () => import("@/views/accounts/type-account/AccountChangeInfor.vue"),
+        component: () =>
+          import("@/views/accounts/type-account/AccountChangeInfor.vue"),
       },
 
       {
+        //module 4
         path: "/accounts/extendrole",
         name: "AccountExtendRole",
-        component: () => import("@/views/accounts/type-account/AccountExtendRole.vue"),
+        component: () =>
+          import("@/views/accounts/type-account/AccountExtendRole.vue"),
       },
 
       {
+        //module9
         path: "/MemberManagementPage",
         name: "MemberManagementPage",
         component: () =>
           import("@/views/MemberManagement/MemberManagementPage.vue"),
       },
       {
+        //module30
         path: "/GenerateLinkPage",
         name: "GenerateLinkPage",
         component: () => import("@/views/GenerateLink/GenerateLinkPage.vue"),
       },
       {
+        //module14
         path: "/CompanyManagement",
         name: "CompanyManagement",
-        component: () => import("@/views/company-managements/CompanyManagement.vue"),
+        component: () =>
+          import("@/views/company-managements/CompanyManagement.vue"),
       },
       {
-        path: '/DisclosureManagement',
-        name: 'DisclosureManagement',
-        component: () => import('@/views/Disclosure/DisclosurePage.vue'),
+        //module28
+        path: "/DisclosureManagement",
+        name: "DisclosureManagement",
+        component: () => import("@/views/Disclosure/DisclosurePage.vue"),
       },
 
       {
-        path: '/TestWork',
-        name: 'TestWork',
-        component: () => import('@/views/Disclosure/TestWork.vue'),
+        path: "/TestWork",
+        name: "TestWork",
+        component: () => import("@/views/Disclosure/TestWork.vue"),
       },
-
     ],
   },
 ];
