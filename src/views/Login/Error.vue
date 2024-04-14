@@ -1,12 +1,28 @@
 <template>
-  <v-app>
-    <h1>
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
-  </v-app>
+
+    <div style="background-color: lightgrey">
+  <v-row align="center">
+    <v-col cols="6">
+      <v-row no-gutters>
+        <v-col
+          class="d-flex"
+          cols="12"
+          style="
+            height: 100vh;
+            background-image: url('/BG2-02.png');
+            background-size: cover;
+            background-position: center;
+          "
+        >
+        </v-col>
+      </v-row>
+    </v-col>
+    <v-col cols="6">
+
+    </v-col>
+  </v-row>
+
+  </div>
 </template>
 
 <script>

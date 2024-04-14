@@ -1,0 +1,71 @@
+{
+    "is_success": true,
+    "code": "200",
+    "message": "Ok",
+    "data": {
+      "user": [
+        {
+          "email": "user@example.com",
+          "firstname": "John",
+          "lastname": "Doe",
+          "is_register": 1,
+          "is_active": 1,
+          "member_type": {
+            "id": 1,
+            "name_th": "Member Type (Thai)",
+            "name_en": "Member Type (English)"
+          },
+          "team": [
+            {
+              "name_th": "Team 1 (Thai)",
+              "name_en": "Team 1 (English)",
+              "is_active": 1
+            }
+          ],
+          "company": [
+            {
+              "company_code": "C001",
+              "name_th": "Company 1 (Thai)",
+              "name_en": "Company 1 (English)",
+              "taxpayer_id_number": "123456789",
+              "is_active": 1
+            }
+          ],
+          "business_unit": [
+            {
+              "id": 1,
+              "name_th": "Business Unit 1 (Thai)",
+              "name_en": "Business Unit 1 (English)",
+              "purchasing_organization": "PO001"
+            }
+          ],
+          "corporation": [
+            {
+              "id": 1,
+              "name_th": "Corporation 1 (Thai)",
+              "name_en": "Corporation 1 (English)"
+            }
+          ],
+          "role": {
+            "id": 1,
+            "name_th": "Role 1 (Thai)",
+            "name_en": "Role 1 (English)"
+          },
+          "modules": [
+            {
+              "module_id": 1,
+              "name_th": "Module 1 (Thai)",
+              "name_en": "Module 1 (English)",
+              "description": "Description of Module 1"
+            },
+            {
+              "module_id": 2,
+              "name_th": "Module 2 (Thai)",
+              "name_en": "Module 2 (English)",
+              "description": "Description of Module 2"
+            }
+          ]
+        }
+      ]
+    }
+  }

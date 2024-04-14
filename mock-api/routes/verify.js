@@ -4,6 +4,7 @@ const { delay } = require('../utils');
 
 module.exports = (app) => {
   const verify_url = require('../data/verify/verifyUrl.json')
+  const sessionInfo = require('../data/verify/sessionInfo.json')
 
   app.post('/verify-url', async (req, res) => {
       await delay(2000);
@@ -27,5 +28,9 @@ module.exports = (app) => {
       "message": "Ok",
       "data": []
     });
+  });
+  app.get('/get-authorization', async (req, res) => {
+    await delay(2000);
+    res.status(200).json(sessionInfo);
   });
 }
