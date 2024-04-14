@@ -101,6 +101,7 @@ const routes = [
         component: () => import("@/views/HistoryLog/HistoryUserPage.vue"),
       },
       {
+        //module 16
         path: "/CreateRolePage/:role_id?",
         name: "CreateRolePage",
         meta: {
@@ -137,6 +138,7 @@ const routes = [
         component: () => import("@/views/historyLog/HistoryRolePage.vue"),
       },
       {
+        //module 11
         path: "/MasterDataManagement",
         name: "MasterDataManagement",
         meta: {
@@ -146,6 +148,7 @@ const routes = [
         component: () => import("@/views/master-data/MasterDataManagement.vue"),
       },
       {
+        //module 12
         path: "/CorparationDetail/:id?",
         name: "CorparationDetail",
         meta: {
@@ -156,6 +159,7 @@ const routes = [
           import("@/views/master-data/details/CorparationDetail.vue"),
       },
       {
+        //module 13
         path: "/BusinessUnitDetail/:id?",
         name: "BusinessUnitDetail",
         meta: {
@@ -166,6 +170,7 @@ const routes = [
           import("@/views/master-data/details/BusinessUnitDetail.vue"),
       },
       {
+        //module 14
         path: "/CompanyDetail/:id?",
         name: "CompanyDetail",
         meta: {
@@ -307,6 +312,7 @@ const routes = [
       },
 
       {
+        //module4
         path: "/Account/AccountTask",
         name: "AccountManagement",
         meta: {
@@ -317,6 +323,7 @@ const routes = [
       },
       //Account
       {
+        //module 4
         path: "/Account/AccountDetail/:id?",
         name: "AccountDetail",
         meta: {
@@ -327,6 +334,7 @@ const routes = [
       },
       //business
       {
+        //module 1
         path: "/BusinessPartner/BusinessPartnerList",
         name: "BusinessPartnerList",
         meta: {
@@ -337,6 +345,7 @@ const routes = [
           import("@/views/BusinessPartner/BusinessPartnerList.vue"),
       },
       {
+        //module 1
         path: "/BusinessPartner/SearchBusinessPartner",
         name: "SearchBusinessPartner",
         meta: {
@@ -347,6 +356,7 @@ const routes = [
           import("@/views/BusinessPartner/SearchBusinessPartner.vue"),
       },
       {
+        //module 1
         path: "/BusinessPartner/CreateBusinessPartner",
         name: "CreateBusinessPartner",
         meta: {
@@ -357,6 +367,7 @@ const routes = [
           import("@/views/BusinessPartner/CreateBusinessPartner.vue"),
       },
       {
+        //module 1
         path: "/BusinessPartner/ChangInfo",
         name: "ChangInfo",
         meta: {
@@ -365,8 +376,9 @@ const routes = [
         },
         component: () => import("@/views/BusinessPartner/ChangInfo.vue"),
       },
-      ///ExtendCompany
+
       {
+        //module 1
         path: "/BusinessPartner/ExtendCompany",
         name: "ExtendCompany",
         meta: {
@@ -377,6 +389,7 @@ const routes = [
       },
 
       {
+        //ไม่ใช้
         path: "/BusinessPartner/CustomerVendor",
         name: "CustomerVendor",
         meta: {
@@ -397,6 +410,7 @@ const routes = [
       ////
 
       {
+        //module 1
         path: "/BusinessPartner/ExtendRole",
         name: "ExtendRole",
         meta: {
@@ -406,6 +420,7 @@ const routes = [
         component: () => import("@/views/BusinessPartner/ExtendRole.vue"),
       },
       {
+        //module1
         path: "/BusinessPartner/AttachedDocument",
         name: "AttachedDocument",
         meta: {
@@ -416,6 +431,7 @@ const routes = [
       },
 
       {
+        //module 3
         path: "/accounts/AccountDashBoard",
         name: "AccountDashBoard",
         meta: {
@@ -426,6 +442,7 @@ const routes = [
       },
 
       {
+        //module 4
         path: "/accounts/extendcompany",
         name: "AccountExtendCompany",
         meta: {
@@ -436,6 +453,7 @@ const routes = [
       },
 
       {
+        //module 4
         path: "/accounts/AccountChangeInfo",
         name: "AccountChangeInfo",
         meta: {
@@ -446,6 +464,7 @@ const routes = [
       },
 
       {
+        //module 4
         path: "/accounts/extendrole",
         name: "AccountExtendRole",
         meta: {
@@ -456,6 +475,7 @@ const routes = [
       },
 
       {
+        //module9
         path: "/MemberManagementPage",
         name: "MemberManagementPage",
         meta: {
@@ -466,6 +486,7 @@ const routes = [
           import("@/views/MemberManagement/MemberManagementPage.vue"),
       },
       {
+        //module30
         path: "/GenerateLinkPage",
         name: "GenerateLinkPage",
         meta: {
@@ -475,6 +496,7 @@ const routes = [
         component: () => import("@/views/GenerateLink/GenerateLinkPage.vue"),
       },
       {
+        //module14
         path: "/CompanyManagement",
         name: "CompanyManagement",
         meta: {
@@ -501,7 +523,6 @@ const routes = [
         },
         component: () => import('@/views/Disclosure/TestWork.vue'),
       },
-
     ],
   },
 ];
