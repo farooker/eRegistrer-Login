@@ -59,8 +59,6 @@ onMounted(() => {
       desc: "กรุณาติดต่อ Frasers Propoty Thailand เพื่อทำรายการใหม่",
     };
   }
-
-  const handleToBack = () => {};
 });
 </script>
 

@@ -31,7 +31,7 @@
 
           <v-row no-gutters>
             <v-col cols="12">
-              <v-text-field variant="outlined" placeholder="Email" :rules="rulesValid.email"></v-text-field>
+              <v-text-field v-model="email" variant="outlined" placeholder="Email" :rules="rulesValid.email"></v-text-field>
             </v-col>
           </v-row>
 

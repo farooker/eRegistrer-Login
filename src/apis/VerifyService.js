@@ -1,9 +1,19 @@
 import axiosBase from "./AxiosConfig";
 
-const verifyUrl = async (_email = "", _code = "") => {
+
+const  getAuthenInfo = async (_email = "")=>{
   return await axiosBase({
-    method: "post",
-    url: "/verify-url",
+     method: 'get',
+     url: '/get-authorization',
+     params: {
+       email: _email,
+     }
+   });
+ }
+const  verifyUrl = async (_email = "",_code = "")=>{
+ return await axiosBase({
+    method: 'post',
+    url: '/verify-url',
     data: {
       email: _email,
       code: _code,
@@ -98,6 +108,7 @@ const checkExistingUsernam = async (username) => {
 };
 
 export default {
+  getAuthenInfo,
   verifyUrl,
   forgetPassword,
   resetPassword,
