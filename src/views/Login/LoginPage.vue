@@ -68,14 +68,14 @@ const handleVertifyUrl = async () => {
       if (val == 400) {
         router.push({
           name: "ErrorPage",
-          query: { err: "EXP_FORM" }
+          query: { err: "EXP_FORM" },
         });
       }
 
       if (val == 404) {
         router.push({
           name: "ErrorPage",
-          query: { err: "NOT_FOUND" }
+          query: { err: "NOT_FOUND" },
         });
       }
     }
@@ -104,6 +104,7 @@ const handleLoginClicked = async (dataInputLogin) => {
     );
     if (response.data?.is_success) {
       localStorage.setItem("temp_new_register", dataInput.value.Password);
+      sessionStorage.setItem("auth_email", dataInput.value.Email);
       router.push({
         name: "LoginOtpPage",
         query: { email: dataInput.value.Email },
