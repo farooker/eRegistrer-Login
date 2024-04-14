@@ -133,8 +133,10 @@
   onBeforeMount(() => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    email.value = urlParams.get('email');
+    email.value = urlParams.get('accessible_email');
     code.value = urlParams.get('code');
+    console.log(code.value)
+    console.log(email.value)
 
     handleVerifyUrl(email.value, code.value);
   });

@@ -67,6 +67,8 @@ onMounted(() => {
       desc: "กรุณาติดต่อ Frasers Propoty Thailand เพื่อทำรายการใหม่",
     };
   }
+  // sessionStorage.removeItem('auth_email');
+  // sessionStorage.removeItem('auth_modules');
 });
 </script>
 

@@ -24,8 +24,8 @@ const store = useSessionInfoStore();
 
 
 onMounted( () => {
-  //sessionStorage.setItem("auth_email", 'email@gmail.com');
-  let auth_email = 'farookstyle.ps@gmail.com'; //sessionStorage.getItem("auth_email");
+  // sessionStorage.setItem("auth_email", 'email@gmail.com');
+  let auth_email = sessionStorage.getItem("auth_email");
   console.log(auth_email)
   handleAuthorization(auth_email);
 });
@@ -44,8 +44,6 @@ const handleAuthorization = async (email) => {
       handlePushDefualt(modulesId[0])
     }
   } catch (e) {
-    sessionStorage.removeItem('auth_email');
-    sessionStorage.removeItem('auth_modules');
     router.push('/Error?err=NOT_FOUND');
   }
 }

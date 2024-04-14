@@ -53,7 +53,7 @@ const routes = [
     component: () => import("@/views/Login/ForgetPasswordPage.vue"),
   },
   {
-    path: "/ResetPassword",
+    path: "/reset-password",
     name: "ResetPasswordPage",
     meta: {
       requiresAuth :false,
@@ -88,7 +88,7 @@ const routes = [
         name: "UserManagement",
         meta: {
           requiresAuth :true,
-          module_id: 2
+          module_id: 8
         },
         component: () => import("@/views/UserMangement/UserMangementPage.vue"),
       },
@@ -322,26 +322,52 @@ const routes = [
       },
 
       {
-        //module4
+        // Account
         path: "/Account/AccountTask",
         name: "AccountManagement",
         meta: {
           requiresAuth :true,
-          module_id: 4
+          module_id: 2
         },
         component: () => import("@/views/accounts/AccountManagement.vue"),
       },
-      //Account
       {
-        //module 4
         path: "/Account/AccountDetail/:id?",
         name: "AccountDetail",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 2
         },
         component: () => import("@/views/accounts/AccountDetail.vue"),
       },
+      {
+        path: "/accounts/extendrole",
+        name: "AccountExtendRole",
+        meta: {
+          requiresAuth :true,
+          module_id: 2
+        },
+        component: () => import("@/views/accounts/type-account/AccountExtendRole.vue"),
+      },
+      {
+        path: "/accounts/AccountChangeInfo",
+        name: "AccountChangeInfo",
+        meta: {
+          requiresAuth :true,
+          module_id: 2
+        },
+        component: () => import("@/views/accounts/type-account/AccountChangeInfor.vue"),
+      },
+      {
+        path: "/accounts/extendcompany",
+        name: "AccountExtendCompany",
+        meta: {
+          requiresAuth :true,
+          module_id: 2
+        },
+        component: () => import("@/views/accounts/type-account/AccountExtendCompany.vue"),
+      },
+
       //business
       {
         //module 1
@@ -349,7 +375,7 @@ const routes = [
         name: "BusinessPartnerList",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 1
         },
         component: () =>
           import("@/views/BusinessPartner/BusinessPartnerList.vue"),
@@ -360,7 +386,7 @@ const routes = [
         name: "SearchBusinessPartner",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 1
         },
         component: () =>
           import("@/views/BusinessPartner/SearchBusinessPartner.vue"),
@@ -371,7 +397,7 @@ const routes = [
         name: "CreateBusinessPartner",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 1
         },
         component: () =>
           import("@/views/BusinessPartner/CreateBusinessPartner.vue"),
@@ -382,7 +408,7 @@ const routes = [
         name: "ChangInfo",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 1
         },
         component: () => import("@/views/BusinessPartner/ChangInfo.vue"),
       },
@@ -393,7 +419,7 @@ const routes = [
         name: "ExtendCompany",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 1
         },
         component: () => import("@/views/BusinessPartner/ExtendCompany.vue"),
       },
@@ -425,7 +451,7 @@ const routes = [
         name: "ExtendRole",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 1
         },
         component: () => import("@/views/BusinessPartner/ExtendRole.vue"),
       },
@@ -435,7 +461,7 @@ const routes = [
         name: "AttachedDocument",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 1
         },
         component: () => import("@/views/BusinessPartner/AttachedDocument.vue"),
       },
@@ -446,42 +472,9 @@ const routes = [
         name: "AccountDashBoard",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 3
         },
         component: () => import("@/views/accounts/AccountDashBoard.vue"),
-      },
-
-      {
-        //module 4
-        path: "/accounts/extendcompany",
-        name: "AccountExtendCompany",
-        meta: {
-          requiresAuth :true,
-          module_id: null
-        },
-        component: () => import("@/views/accounts/type-account/AccountExtendCompany.vue"),
-      },
-
-      {
-        //module 4
-        path: "/accounts/AccountChangeInfo",
-        name: "AccountChangeInfo",
-        meta: {
-          requiresAuth :true,
-          module_id: null
-        },
-        component: () => import("@/views/accounts/type-account/AccountChangeInfor.vue"),
-      },
-
-      {
-        //module 4
-        path: "/accounts/extendrole",
-        name: "AccountExtendRole",
-        meta: {
-          requiresAuth :true,
-          module_id: null
-        },
-        component: () => import("@/views/accounts/type-account/AccountExtendRole.vue"),
       },
 
       {
@@ -490,7 +483,7 @@ const routes = [
         name: "MemberManagementPage",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 9
         },
         component: () =>
           import("@/views/MemberManagement/MemberManagementPage.vue"),
@@ -501,7 +494,7 @@ const routes = [
         name: "GenerateLinkPage",
         meta: {
           requiresAuth :true,
-          module_id: 30
+          module_id: 1
         },
         component: () => import("@/views/GenerateLink/GenerateLinkPage.vue"),
       },
@@ -511,7 +504,7 @@ const routes = [
         name: "CompanyManagement",
         meta: {
           requiresAuth :true,
-          module_id: 14
+          module_id: 1
         },
         component: () => import("@/views/company-managements/CompanyManagement.vue"),
       },
@@ -546,6 +539,9 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   if (to.meta.requiresAuth) {
     let module = sessionStorage.getItem("auth_modules");
+    if(module === null || module === undefined || module === '') {
+      next('/Error?err=NOT_FOUND');
+    }
     if(module !== null || module !== undefined || module !== '') {
       const  modules =  JSON.parse(module);
       const  toModuleId = to.meta.module_id;
