@@ -17,7 +17,7 @@
         <h1>{{ errDesc.title }}</h1>
         <p>{{ errDesc.desc }}</p>
         <v-col cols="auto">
-          <v-btn color="red" @click="handleToBack()" size="small"
+          <v-btn color="red" @click="handleToBack" size="small"
             >กลับไปหน้าหลัก</v-btn
           >
         </v-col>
@@ -29,6 +29,8 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const route = useRoute();
 const err = route.query.err;
@@ -37,6 +39,12 @@ const errDesc = ref({
   title: "",
   desc: "",
 });
+
+const handleToBack = () => {
+  router.push({
+    name: "SignInPage",
+  });
+};
 
 onMounted(() => {
   if (err == "NOT_FOUND") {

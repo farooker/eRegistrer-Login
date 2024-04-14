@@ -34,11 +34,12 @@ import FormInputOtp from "@/components/forms/Login/FormInputOtp.vue";
 import VerifyService from "@/apis/VerifyService";
 import { useErrorHandlingDialog } from "@/components/dialogs/ExceptionHandleDialogService";
 const { handlingErrorsMessage } = useErrorHandlingDialog();
-
+import { useRouter } from "vue-router";
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 
 const route = useRoute();
+const router = useRouter();
 const email = route.query.email;
 
 const dataInputOTPVertify = ref();
@@ -95,7 +96,8 @@ const login = async () => {
       localStorage.getItem("temp_new_register")
     );
     if (response.data?.is_success) {
-      await getAutorization();
+      // await getAutorization();
+      router.push('/Authorization');
     }
   } catch (e) {
     if (e.response) {
@@ -107,22 +109,22 @@ const login = async () => {
   }
 };
 
-const getAutorization = async () => {
-  try {
-    const response = await VerifyService.getAuthrization(email);
-    if (response.data?.is_success) {
-      localStorage.setItem("temp_autherization", email);
-      localStorage.removeItem("temp_new_register");
-    }
-  } catch (e) {
-    if (e.response) {
-      const val = e.response.data;
-      handlingErrorsMessage(val.message, val?.data.error);
-      return;
-    }
-    handlingErrorsMessage("unknown", e.message);
-  }
-};
+// const getAutorization = async () => {
+//   try {
+//     const response = await VerifyService.getAuthrization(email);
+//     if (response.data?.is_success) {
+//       localStorage.setItem("temp_autherization", email);
+//       localStorage.removeItem("temp_new_register");
+//     }
+//   } catch (e) {
+//     if (e.response) {
+//       const val = e.response.data;
+//       handlingErrorsMessage(val.message, val?.data.error);
+//       return;
+//     }
+//     handlingErrorsMessage("unknown", e.message);
+//   }
+// };
 </script>
 
 <style scoped>
