@@ -1,38 +1,67 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <v-app>
-    <h1>
-      {{ otherError }}
-    </h1>
-    <NuxtLink to="/">
-      Home page
-    </NuxtLink>
+    <v-app-bar :elevation="2" rounded>
+      <v-app-bar-title class="d-flex justify-center">
+        <v-img
+          :width="100"
+          aspect-ratio="16/9"
+          cover
+          src="/frasers.png"
+        ></v-img>
+      </v-app-bar-title>
+    </v-app-bar>
+    <v-main class="d-flex align-center justify-center" style="height: 100vh">
+      <div class="text-center">
+        <v-icon size="100" icon="mdi-alert-outline"></v-icon>
+        <h1>{{ errDesc.title }}</h1>
+        <p>{{ errDesc.desc }}</p>
+        <v-col cols="auto">
+          <v-btn color="red" @click="handleToBack()" size="small"
+            >กลับไปหน้าหลัก</v-btn
+          >
+        </v-col>
+      </div>
+    </v-main>
   </v-app>
 </template>
 
-<script>
-export default {
-  name: 'EmptyLayout',
-  layout: 'empty',
-  props: {
-    error: {
-      type: Object,
-      default: null
-    }
-  },
-  data () {
-    return {
-      pageNotFound: '404 Not Found',
-      otherError: 'An error occurred'
-    }
-  },
-  head () {
-    const title =
-      this.error.statusCode === 404 ? this.pageNotFound : this.otherError
-    return {
-      title
-    }
+<script setup>
+import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+
+const route = useRoute();
+const err = route.query.err;
+
+const errDesc = ref({
+  title: "",
+  desc: "",
+});
+
+onMounted(() => {
+  if (err == "NOT_FOUND") {
+    errDesc.value = {
+      title: "ขออภัยไม่พบรายการที่ต้องการ",
+      desc: "กรุณาตรวจสอบใหม่อีกครั้ง",
+    };
   }
-}
+
+  if (err == "EXP_FORM") {
+    errDesc.value = {
+      title: "ระยะเวลาทำฟอร์มของคุณหมดอายุ",
+      desc: "กรุณาติดต่อ Frasers Propoty Thailand เพื่อทำรายการใหม่",
+    };
+  }
+
+  if (err == "EXP_SING_UP") {
+    errDesc.value = {
+      title: "ระยะเวลาทำฟอร์มของคุณหมดอายุ",
+      desc: "กรุณาติดต่อ Frasers Propoty Thailand เพื่อทำรายการใหม่",
+    };
+  }
+
+  const handleToBack = () => {};
+});
 </script>
 
 <style scoped>

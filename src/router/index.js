@@ -14,11 +14,20 @@ const routes = [
     component: () => import("@/views/Login/LoginPage.vue"),
   },
   {
-    path: "/OtpVerify",
-    name: "OtpVerifyPage",
+    path: "/SignUp",
+    name: "SignUpPage",
+    component: () => import("@/views/Login/SignUpPage.vue"),
+  },
+  {
+    path: "/SignUpOTP",
+    name: "SignUpOtpPage",
+    component: () => import("@/views/Login/SignUpOtpPage.vue"),
+  },
+  {
+    path: "/LoginOtpPage",
+    name: "LoginOtpPage",
     component: () => import("@/views/Login/LoginOtpPage.vue"),
   },
-
   {
     path: "/ForgetPassword",
     name: "ForgetPasswordPage",
@@ -245,19 +254,22 @@ const routes = [
       {
         path: "/accounts/extendcompany",
         name: "AccountExtendCompany",
-        component: () => import("@/views/accounts/type-account/AccountExtendCompany.vue"),
+        component: () =>
+          import("@/views/accounts/type-account/AccountExtendCompany.vue"),
       },
 
       {
         path: "/accounts/AccountChangeInfo",
         name: "AccountChangeInfo",
-        component: () => import("@/views/accounts/type-account/AccountChangeInfor.vue"),
+        component: () =>
+          import("@/views/accounts/type-account/AccountChangeInfor.vue"),
       },
 
       {
         path: "/accounts/extendrole",
         name: "AccountExtendRole",
-        component: () => import("@/views/accounts/type-account/AccountExtendRole.vue"),
+        component: () =>
+          import("@/views/accounts/type-account/AccountExtendRole.vue"),
       },
 
       {
@@ -274,20 +286,20 @@ const routes = [
       {
         path: "/CompanyManagement",
         name: "CompanyManagement",
-        component: () => import("@/views/company-managements/CompanyManagement.vue"),
+        component: () =>
+          import("@/views/company-managements/CompanyManagement.vue"),
       },
       {
-        path: '/DisclosureManagement',
-        name: 'DisclosureManagement',
-        component: () => import('@/views/Disclosure/DisclosurePage.vue'),
+        path: "/DisclosureManagement",
+        name: "DisclosureManagement",
+        component: () => import("@/views/Disclosure/DisclosurePage.vue"),
       },
 
       {
-        path: '/TestWork',
-        name: 'TestWork',
-        component: () => import('@/views/Disclosure/TestWork.vue'),
+        path: "/TestWork",
+        name: "TestWork",
+        component: () => import("@/views/Disclosure/TestWork.vue"),
       },
-
     ],
   },
 ];

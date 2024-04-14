@@ -76,7 +76,7 @@ const vertifyOtpCode = async () => {
       itemOTP.value.reference_code
     );
     if (response.data?.is_success) {
-      await login();
+      await signup();
     }
   } catch (e) {
     if (e.response) {
@@ -88,9 +88,9 @@ const vertifyOtpCode = async () => {
   }
 };
 
-const login = async () => {
+const signup = async () => {
   try {
-    const response = await VerifyService.login(
+    const response = await VerifyService.signUp(
       email,
       localStorage.getItem("temp_new_register")
     );
@@ -111,7 +111,7 @@ const getAutorization = async () => {
   try {
     const response = await VerifyService.getAuthrization(email);
     if (response.data?.is_success) {
-      localStorage.setItem("temp_autherization", email);
+      localStorage.setItem("temp_autherization");
       localStorage.removeItem("temp_new_register");
     }
   } catch (e) {
