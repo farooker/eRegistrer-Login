@@ -24,8 +24,8 @@ const store = useSessionInfoStore();
 
 
 onMounted( () => {
-  sessionStorage.setItem("auth_email", 'email@gmail.com');
-  let auth_email = sessionStorage.getItem("auth_email");
+  //sessionStorage.setItem("auth_email", 'email@gmail.com');
+  let auth_email = 'farookstyle.ps@gmail.com'; //sessionStorage.getItem("auth_email");
   console.log(auth_email)
   handleAuthorization(auth_email);
 });
@@ -36,8 +36,8 @@ const handleAuthorization = async (email) => {
     const response = await VerifyService.getAuthenInfo(email);
     if (response.data?.is_success) {
       // result
-      const authInfo = response.data.data.user[0];
-      const modulesId =  Array.from(authInfo.modules, (x) => x.module_id)
+      const authInfo = response.data.data[0];
+      const modulesId =  Array.from(authInfo.modules, (x) => x.id)
       store.sessionInfo = authInfo;
       const modulesJson = JSON.stringify(modulesId);
       sessionStorage.setItem("auth_modules", modulesJson);

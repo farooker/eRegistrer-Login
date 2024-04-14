@@ -3,9 +3,9 @@ import axiosBase from "./AxiosConfig";
 
 const  getAuthenInfo = async (_email = "")=>{
   return await axiosBase({
-     method: 'get',
+     method: 'post',
      url: '/get-authorization',
-     params: {
+     data: {
        email: _email,
      }
    });

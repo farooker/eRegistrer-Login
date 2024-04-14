@@ -116,7 +116,7 @@ const routes = [
         name: "CreateRolePage",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 16
         },
         component: () => import("@/views/rules/CreateRolePage.vue"),
       },
@@ -153,7 +153,7 @@ const routes = [
         name: "MasterDataManagement",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 11
         },
         component: () => import("@/views/master-data/MasterDataManagement.vue"),
       },
@@ -163,7 +163,7 @@ const routes = [
         name: "CorparationDetail",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 12
         },
         component: () =>
           import("@/views/master-data/details/CorparationDetail.vue"),
@@ -174,7 +174,7 @@ const routes = [
         name: "BusinessUnitDetail",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 13
         },
         component: () =>
           import("@/views/master-data/details/BusinessUnitDetail.vue"),
@@ -185,7 +185,7 @@ const routes = [
         name: "CompanyDetail",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 14
         },
         component: () =>
           import("@/views/master-data/details/CompanyDetail.vue"),
@@ -327,7 +327,7 @@ const routes = [
         name: "AccountManagement",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 4
         },
         component: () => import("@/views/accounts/AccountManagement.vue"),
       },
@@ -501,7 +501,7 @@ const routes = [
         name: "GenerateLinkPage",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 30
         },
         component: () => import("@/views/GenerateLink/GenerateLinkPage.vue"),
       },
@@ -511,7 +511,7 @@ const routes = [
         name: "CompanyManagement",
         meta: {
           requiresAuth :true,
-          module_id: null
+          module_id: 14
         },
         component: () => import("@/views/company-managements/CompanyManagement.vue"),
       },

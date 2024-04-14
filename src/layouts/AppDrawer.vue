@@ -12,7 +12,7 @@
 import { ref , computed , onMounted } from "vue";
 import { useRoute } from "vue-router";
 import NavItem from "../components/items/NavItem.vue";
-import Navigation from "../router/navigation";
+import Navigation from "@/router/navigation";
 import { useSessionInfoStore } from "@/stores/sessionInfoStore";
 const store = useSessionInfoStore();
 
@@ -29,7 +29,7 @@ const menus = computed(() => {
   const modules = store.sessionInfo?.modules;
   if(modules){
     return  Array.from(modules, (x) => {
-      return Navigation.find(_ => _.module_id === x.module_id);
+      return Navigation.find(_ => _.module_id === x.id);
     })
   }
   return [];

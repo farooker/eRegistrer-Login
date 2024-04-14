@@ -29,7 +29,7 @@ module.exports = (app) => {
       "data": []
     });
   });
-  app.get('/get-authorization', async (req, res) => {
+  app.post('/get-authorization', async (req, res) => {
     await delay(2000);
     res.status(200).json(sessionInfo);
   });
