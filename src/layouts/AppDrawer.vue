@@ -38,6 +38,8 @@ const menus = computed(() => {
 onMounted(() => {
   const modules = store.sessionInfo?.modules;
   if(modules === null || modules === undefined || modules === '') {
+    const currentUrl = router.currentRoute.value.fullPath;
+    sessionStorage.setItem("auth_reload", currentUrl);
     router.push('/Authorization');
    }
 });

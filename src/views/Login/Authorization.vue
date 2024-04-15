@@ -41,13 +41,20 @@ const handleAuthorization = async (email) => {
       store.sessionInfo = authInfo;
       const modulesJson = JSON.stringify(modulesId);
       sessionStorage.setItem("auth_modules", modulesJson);
-      handlePushDefualt(modulesId[0])
+
+      let current = sessionStorage.getItem("auth_reload");
+        if(current !== null || current !== undefined || current !== '') {
+          router.push(current);
+        }else{
+          handlePushDefualt(modulesId[0])
+      }
     }
   } catch (e) {
     router.push('/Error?err=NOT_FOUND');
   }
 }
 
+// eslint-disable-next-line no-unused-vars
 const handlePushDefualt = (module_id) =>{
 
   const root = Navigation.find(_ => _.module_id === module_id);
